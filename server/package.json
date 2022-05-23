@@ -17,6 +17,7 @@
     "mongoose": "^6.3.3"
   },
   "devDependencies": {
-    "fastify-swagger": "^5.2.0"
+    "fastify-swagger": "^5.2.0",
+    "nodemon": "^2.0.16"
   }
 }
