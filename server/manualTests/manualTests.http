@@ -1,4 +1,7 @@
 POST http://localhost:5001/record/add
 
 ###
-GET http://localhost:5001/record
+GET http://localhost:5001/restaurant
+
+### 
+GET http://localhost:5001/restaurant/search/Kosher
