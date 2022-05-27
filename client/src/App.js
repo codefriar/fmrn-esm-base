@@ -35,23 +35,25 @@ function App() {
       </AppBar>
       <Card>
         <CardContent>
-          <TextField
-            id="standard-basic"
-            label="Search Term"
-            variant="standard"
-            placeholder="Search Term"
-            value={searchTerm}
-            onChange={handleChange}
-          />
-          <Button
-            type="submit"
-            variant="contained"
-            color="primary"
-            className="classes.submit"
-            onClick={handleSearch}
-          >
-            Search{' '}
-          </Button>
+          <form onSubmit={handleSearch}>
+            <TextField
+              id="standard-basic"
+              label="Search Term"
+              variant="standard"
+              placeholder="Search Term"
+              value={searchTerm}
+              onChange={handleChange}
+            />
+            <Button
+              type="submit"
+              variant="contained"
+              color="primary"
+              className="classes.submit"
+              onClick={handleSearch}
+            >
+              Search{' '}
+            </Button>
+          </form>
         </CardContent>
       </Card>
       <Card>
