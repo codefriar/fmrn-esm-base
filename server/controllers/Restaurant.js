@@ -8,6 +8,16 @@ const getAllRecords = async (req, res) => {
   return data
 }
 
+const getCuisines = async (req, res) => {
+  var data = await restaurant.distinct('cuisine')
+  return data
+}
+
+const getBouroghs = async (req, res) => {
+  var data = await restaurant.distinct('borough')
+  return data
+}
+
 // SEARCH using Atlas Search
 const search = async (req, res) => {
   var data = await restaurants

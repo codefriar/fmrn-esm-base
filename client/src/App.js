@@ -5,25 +5,42 @@ import TypoGraphy from '@material-ui/core/Typography'
 import Card from '@material-ui/core/Card'
 import CardContent from '@material-ui/core/CardContent'
 import TextField from '@material-ui/core/TextField'
-import Button from '@material-ui/core/Button'
+// import Button from '@material-ui/core/Button'
 import BuildEnv from './buildEnv.js'
 import ResultsDataTable from './ResultsDataTable.js'
+import Autocomplete from '@mui/material/Autocomplete'
 import './App.css'
 
 function App() {
   const [searchTerm, setSearchTerm] = useState('')
   const [results, setResults] = useState([])
-  const handleChange = (event) => setSearchTerm(event.target.value)
-  const handleSearch = async (event) => {
+  // const handleChange = (event) => setSearchTerm(event.target.value)
+  // const handleSearch = async (event) => {
+  //   event.preventDefault()
+  //   setSearchTerm(event.target.value)
+  //   if (searchTerm.length > 0) {
+  //     const searchResults = await fetch(
+  //       `${BuildEnv()}/restaurant/search/${searchTerm}`
+  //     )
+  //     setResults(await searchResults.json())
+  //   }
+  // }
+
+  const fetchResultsFromBackend = async (event) => {
     event.preventDefault()
     setSearchTerm(event.target.value)
     if (searchTerm.length > 0) {
-      const searchResults = await fetch(
-        `${BuildEnv()}/restaurant/search/${searchTerm}`
-      )
-      setResults(await searchResults.json())
+      try {
+        const searchResults = await fetch(
+          `${BuildEnv()}/restaurant/search/${searchTerm}`
+        )
+        setResults(await searchResults.json())
+      } catch (err) {
+        setResults([])
+      }
     }
   }
+
   return (
     <div className="App">
       <AppBar color="primary" position="static">
@@ -35,7 +52,24 @@ function App() {
       </AppBar>
       <Card>
         <CardContent>
-          <form onSubmit={handleSearch}>
+          <Autocomplete
+            freeSolo
+            filterOptions={(x) => x}
+            getOptionLabel={(option) => option.name}
+            autoComplete
+            autoHighlight
+            options={results}
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                onChange={fetchResultsFromBackend}
+                variant="outlined"
+                label="Search Box"
+              />
+            )}
+          />
+
+          {/* <form onSubmit={handleSearch}>
             <TextField
               id="standard-basic"
               label="Search Term"
@@ -56,12 +90,12 @@ function App() {
             >
               Search{' '}
             </Button>
-          </form>
+          </form> */}
         </CardContent>
       </Card>
       <Card>
         <CardContent>
-          <ResultsDataTable results={results}></ResultsDataTable>
+          {/* <ResultsDataTable results={results}></ResultsDataTable> */}
         </CardContent>
       </Card>
     </div>
