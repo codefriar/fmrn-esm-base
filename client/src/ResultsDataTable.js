@@ -46,7 +46,7 @@ export default class ResultsDataTable extends React.Component {
           </TableHead>
           <TableBody>
             {this.props.results.map((row) => (
-              <this.StyledTableRow key={row.id}>
+              <this.StyledTableRow key={row._id}>
                 <this.StyledTableCell component="th" scope="row">
                   {row.name}
                 </this.StyledTableCell>
