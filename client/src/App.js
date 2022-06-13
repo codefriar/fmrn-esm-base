@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
-import TypoGraphy from '@material-ui/core/Typography'
+import Typography from '@material-ui/core/Typography'
 import Card from '@material-ui/core/Card'
 import CardContent from '@material-ui/core/CardContent'
 import TextField from '@material-ui/core/TextField'
@@ -10,8 +10,6 @@ import BuildEnv from './buildEnv.js'
 import ResultsDataTable from './ResultsDataTable.js'
 import Autocomplete from '@mui/material/Autocomplete'
 import FacetChips from './FacetChips'
-import Box from '@mui/material/Box'
-import Paper from '@mui/material/Paper'
 import Grid from '@mui/material/Grid'
 import './App.css'
 
@@ -89,9 +87,9 @@ function App() {
     <div className="App">
       <AppBar color="primary" position="static">
         <Toolbar>
-          <TypoGraphy variant="h3" color="inherit">
+          <Typography variant="h3" color="inherit">
             NYC Restaurant Search
-          </TypoGraphy>
+          </Typography>
         </Toolbar>
       </AppBar>
       <Grid container spacing={2}>
@@ -165,7 +163,14 @@ function App() {
           </Card>
         </Grid>
         <Grid item xs={6}>
-          <FacetChips facets={facetResults} />
+          <Card>
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="div">
+                Facets
+              </Typography>
+              <FacetChips facets={facetResults} />
+            </CardContent>
+          </Card>
         </Grid>
       </Grid>
 

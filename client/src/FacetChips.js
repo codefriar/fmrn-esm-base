@@ -10,7 +10,7 @@ export default class FacetChips extends Component {
       for (const [facetName, facetData] of Object.entries(
         this.props.facets.facet
       )) {
-        for (const [key, value] of Object.entries(facetData.buckets)) {
+        for (const [, value] of Object.entries(facetData.buckets)) {
           facets.push({
             key: value._id,
             label: value._id + ' (' + value.count + ')',
